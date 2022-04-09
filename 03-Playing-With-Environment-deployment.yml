@@ -3,7 +3,7 @@ trigger:
 strategy:
   matrix:
     linux:
-       operatingSystem: 'ubantu-latest'
+       operatingSystem: 'ubuntu-latest'
     mac:
        operatingSystem: 'macos-latest'
 pool:
