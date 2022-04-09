@@ -15,35 +15,41 @@ stages:
   - job: FisrtJob
     steps:
     - bash: echo Build First job
-    - bash: echo $(PipelineLevelVariable)
+    - bash: echo $(Build.BuildNumber)
+    - bash: echo $(Build.BuildId)
+    - bash: echo $(Build.SourceBranchName)
+    - bash: echo $(Build.SourceDirectory)
+    - bash: echo $(System.DefaultWorkingDirectory)
+    - bash: ls -R $(System.DefaultWorkingDirectory)
+    - bash: echo $(Build.ArtifactStagingDirectory)
   - job: SecondJob
     steps:
     - bash: echo Build second job 
-- stage: DevDeploy
-  variables:
-   environment: Dev
-  dependsOn: build
-  jobs:
-  - job: DevJob
-    steps:
-    - bash: echo DevDeply job $(environment)
-- stage: QADeploy
-  variables:
-   environment: Qual
-  dependsOn: build
-  jobs:
-  - job: QAJob
-    steps:
-    - bash: echo QA Deploy job $(environment)
-- stage: ProdDeploy
-  variables:
-   environment: Prod
-  dependsOn: 
-  - DevDeploy
-  - QADeploy
-  jobs:
-  - job: ProdJob
-    steps:
-    - bash: echo Prod Deploy job $(environment)
+# - stage: DevDeploy
+#   variables:
+#    environment: Dev
+#   dependsOn: build
+#   jobs:
+#   - job: DevJob
+#     steps:
+#     - bash: echo DevDeply job $(environment)
+# - stage: QADeploy
+#   variables:
+#    environment: Qual
+#   dependsOn: build
+#   jobs:
+#   - job: QAJob
+#     steps:
+#     - bash: echo QA Deploy job $(environment)
+# - stage: ProdDeploy
+#   variables:
+#    environment: Prod
+#   dependsOn: 
+#   - DevDeploy
+#   - QADeploy
+#   jobs:
+#   - job: ProdJob
+#     steps:
+#     - bash: echo Prod Deploy job $(environment)
 
 
