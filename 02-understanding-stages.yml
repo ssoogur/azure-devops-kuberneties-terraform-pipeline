@@ -15,6 +15,7 @@ stages:
   - job: FisrtJob
     steps:
     - bash: echo Build First job
+    - bash: ${PIPELINELEVELVARIABLE}
   - job: SecondJob
     steps:
     - bash: echo Build second job 
@@ -29,7 +30,7 @@ stages:
   jobs:
   - job: QAJob
     steps:
-    - bash: echo QA Deploy job
+    - bash: echo QA Deploy job $(PIPELINELEVELVARIABLE)
 - stage: ProdDeploy
   dependsOn: 
   - DevDeploy
@@ -37,6 +38,6 @@ stages:
   jobs:
   - job: ProdJob
     steps:
-    - bash: echo Prod Deploy job
+    - bash: echo Prod Deploy job $(PIPELINELEVELVARIABLE)
 
 
