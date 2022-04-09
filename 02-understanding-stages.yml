@@ -26,7 +26,7 @@ stages:
   jobs:
   - job: DevJob
     steps:
-    - bash: echo DevDeply job ${environment}
+    - bash: echo DevDeply job $(environment)
 - stage: QADeploy
   variables:
    environment: Qual
